@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agronegocios - Casa Alarcia | Soluciones integrales para el campo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ed',
+                            100: '#d9ebd2',
+                            200: '#b5d7a8',
+                            300: '#8bbc76',
+                            400: '#6ba34e',
+                            500: '#4f8a33',
+                            600: '#3d6e27',
+                            700: '#325822',
+                            800: '#2a471f',
+                            900: '#1e3518',
+                            950: '#111f0e',
+                        },
+                        gold: {
+                            50: '#fefbf3',
+                            100: '#fdf2d1',
+                            200: '#fbe39e',
+                            300: '#f8d06a',
+                            400: '#f5b83c',
+                            500: '#e5a322',
+                            600: '#c07c14',
+                            700: '#9a5a12',
+                            800: '#7d4716',
+                            900: '#683b17',
+                        },
+                        earth: {
+                            50: '#faf6f1',
+                            100: '#f0e6d5',
+                            200: '#e2cca8',
+                            300: '#d2ad76',
+                            400: '#c49553',
+                            500: '#b17f3e',
+                            600: '#966633',
+                            700: '#7a502c',
+                            800: '#654228',
+                            900: '#543725',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Playfair Display', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        .hero-agronegocios {
+            background: 
+                linear-gradient(135deg, rgba(17, 31, 14, 0.88) 0%, rgba(42, 71, 31, 0.75) 40%, rgba(79, 138, 51, 0.55) 100%),
+                url('http://static.photos/agriculture/1200x630/33');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .grain-overlay::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+        .reveal-delay-6 { transition-delay: 0.6s; }
+        .reveal-delay-7 { transition-delay: 0.7s; }
+        .reveal-delay-8 { transition-delay: 0.8s; }
+
+        .nav-scrolled {
+            background: rgba(255, 255, 255, 0.97) !important;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+        }
+        .nav-scrolled .nav-link { color: #2a471f !important; }
+        .nav-scrolled .nav-link:hover { color: #4f8a33 !important; }
+        .nav-scrolled .nav-cta { 
+            background: #4f8a33 !important; 
+            color: white !important;
+        }
+        .nav-scrolled .logo-text { color: #2a471f !important; }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .leaf-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234f8a33' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .service-detail-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .service-detail-card:hover {
+            transform: translateY(-6px);
+        }
+        .service-detail-card:hover .detail-icon {
+            background: #4f8a33;
+            color: white;
+            box-shadow: 0 8px 30px rgba(79, 138, 51, 0.4);
+        }
+        .detail-icon {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .product-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(79, 138, 51, 0.12);
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.5); }
+        }
+        .pulse-dot {
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        .float-animation-delayed {
+            animation: float 8s ease-in-out 2s infinite;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f0f7ed; }
+        ::-webkit-scrollbar-thumb { background: #8bbc76; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4f8a33; }
+
+        .form-input:focus {
+            border-color: #4f8a33;
+            box-shadow: 0 0 0 3px rgba(79, 138, 51, 0.15);
+        }
+
+        .toast {
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- ===================== NAVIGATION ===================== -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-lg overflow-hidden shadow-lg shadow-brand-500/30 group-hover:shadow-brand-500/50 transition-shadow">
+                        <img src="logo.png" alt="Casa Alarcia" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <span class="logo-text text-white font-display font-bold text-xl tracking-wide transition-colors">Casa Alarcia</span>
+                        <span class="block text-[10px] uppercase tracking-[0.2em] text-brand-200 font-medium">Desde 1920</span>
+                    </div>
+                </a>
+                <div class="hidden lg:flex items-center gap-1">
+                    <a href="index.html#inicio" class="nav-link text-white/80 hover:text-white px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-white/10">Inicio</a>
+                    <a href="index.html#trayectoria" class="nav-link text-white/80 hover:text-white px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-white/10">Trayectoria</a>
+                    <a href="Agronegocios.html" class="nav-link text-white/80 hover:text-white px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-white/10 bg-white/10">Agronegocios</a>
+                    <a href="YPF.html" class="nav-link text-white/80 hover:text-white px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-white/10">YPF</a>
+                    <a href="index.html#servicios" class="nav-link text-white/80 hover:text-white px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-white/10">Servicios</a>
+                    <a href="index.html#contacto" class="nav-link text-white/80 hover:text-white px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-white/10">Contacto</a>
+                    <a href="https://casaalarcia.clientes.physis.com.ar/phy2web/auth/usuario" target="_blank" 
+                       class="nav-cta ml-3 bg-white/15 backdrop-blur-sm border border-white/25 text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/25 transition-all flex items-center gap-2">
+                        <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                        Acceso Clientes
+                    </a>
+                </div>
+                <button id="mobileMenuBtn" class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-80 max-w-full bg-brand-950 z-[60] shadow-2xl">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-10">
+                <span class="text-white font-display font-bold text-xl">Menú</span>
+                <button id="mobileMenuClose" class="text-white/70 hover:text-white p-2 rounded-lg hover:bg-white/10 transition-colors">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="space-y-1">
+                <a href="index.html#inicio" class="mobile-link block text-white/80 hover:text-white hover:bg-white/10 px-4 py-3 rounded-lg text-lg font-medium transition-colors">Inicio</a>
+                <a href="index.html#trayectoria" class="mobile-link block text-white/80 hover:text-white hover:bg-white/10 px-4 py-3 rounded-lg text-lg font-medium transition-colors">Trayectoria</a>
+                <a href="Agronegocios.html" class="mobile-link block text-brand-200 hover:text-white hover:bg-white/10 px-4 py-3 rounded-lg text-lg font-medium transition-colors">Agronegocios</a>
+                <a href="YPF.html" class="mobile-link block text-white/80 hover:text-white hover:bg-white/10 px-4 py-3 rounded-lg text-lg font-medium transition-colors">YPF</a>
+                <a href="index.html#servicios" class="mobile-link block text-white/80 hover:text-white hover:bg-white/10 px-4 py-3 rounded-lg text-lg font-medium transition-colors">Servicios</a>
+                <a href="index.html#contacto" class="mobile-link block text-white/80 hover:text-white hover:bg-white/10 px-4 py-3 rounded-lg text-lg font-medium transition-colors">Contacto</a>
+            </div>
+            <div class="mt-8 pt-8 border-t border-white/10">
+                <a href="https://casaalarcia.clientes.physis.com.ar/phy2web/auth/usuario" target="_blank" 
+                   class="flex items-center gap-2 bg-brand-500 text-white px-5 py-3 rounded-lg font-semibold hover:bg-brand-600 transition-colors">
+                    <i data-lucide="lock" class="w-4 h-4"></i>
+                    Acceso Clientes
+                </a>
+            </div>
+            <div class="mt-8 pt-8 border-t border-white/10 space-y-3 text-white/50 text-sm">
+                <p>Tel: 02953 452298</p>
+                <p>info@casaalarcia.com</p>
+            </div>
+        </div>
+    </div>
+    <div id="mobileOverlay" class="fixed inset-0 bg-black/50 z-[55] hidden opacity-0 transition-opacity duration-300"></div>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero-agronegocios grain-overlay relative min-h-[70vh] flex items-center">
+        <div class="absolute top-20 right-10 w-64 h-64 bg-brand-400/10 rounded-full blur-3xl float-animation"></div>
+        <div class="absolute bottom-32 left-10 w-48 h-48 bg-gold-400/10 rounded-full blur-3xl float-animation-delayed"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 relative z-10">
+            <div class="max-w-3xl">
+                <div class="reveal inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8">
+                    <span class="w-2 h-2 bg-brand-300 rounded-full pulse-dot"></span>
+                    <span class="text-brand-100 text-sm font-medium">Soluciones para el campo</span>
+                </div>
+
+                <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-white leading-[1.1] mb-6">
+                    Agronegocios <span class="text-brand-300">YPF Directo</span>
+                </h1>
+
+                <p class="reveal reveal-delay-2 text-lg sm:text-xl text-white/70 max-w-2xl leading-relaxed mb-10">
+                    Asesoramiento técnico, insumos de última generación y combustible directo del depósito para optimizar la producción agropecuaria de la región.
+                </p>
+
+                <div class="reveal reveal-delay-3 flex flex-wrap gap-6 text-white/80">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center">
+                            <i data-lucide="sprout" class="w-6 h-6 text-brand-300"></i>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-display font-bold text-white">Asesoramiento</div>
+                            <div class="text-xs text-brand-200">Técnico profesional</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center">
+                            <i data-lucide="flask-conical" class="w-6 h-6 text-brand-300"></i>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-display font-bold text-white">Insumos</div>
+                            <div class="text-xs text-brand-200">De última generación</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center">
+                            <i data-lucide="fuel" class="w-6 h-6 text-brand-300"></i>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-display font-bold text-white">YPF Directo</div>
+                            <div class="text-xs text-brand-200">Combustible del depósito</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40">
+            <span class="text-xs uppercase tracking-widest">Descubrí nuestros servicios</span>
+            <div class="w-px h-8 bg-gradient-to-b from-white/40 to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- ===================== INTRO ===================== -->
+    <section class="py-20 lg:py-28 bg-white leaf-pattern relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="reveal inline-block bg-brand-50 text-brand-700 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">Agronegocios YPF Directo</span>
+                    <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-brand-950 leading-tight mb-6">
+                        Tu partner estratégico <span class="text-brand-500">en el campo</span>
+                    </h2>
+                    <p class="reveal reveal-delay-2 text-gray-600 text-lg leading-relaxed mb-6">
+                        En Casa Alarcia, entendemos que el productor agropecuario necesita más que insumos: necesita un aliado que lo acompañe en cada decisión, que conozca la región y que esté disponible cuando más se lo necesita.
+                    </p>
+                    <p class="reveal reveal-delay-3 text-gray-600 text-lg leading-relaxed mb-6">
+                        A través de nuestro departamento de Agronegocios YPF Directo, ofrecemos asesoramiento técnico personalizado, provisión de agroquímicos, semillas, fertilizantes y el combustible YPF directamente del depósito, eliminando intermediarios y garantizando el mejor precio y disponibilidad.
+                    </p>
+                    <p class="reveal reveal-delay-4 text-gray-600 text-lg leading-relaxed">
+                        Nuestro equipo de profesionales recorre la zona permanentemente, conociendo de primera mano las necesidades de cada lote y cada campaña, para brindar recomendaciones precisas y oportunas.
+                    </p>
+                </div>
+                <div class="reveal reveal-delay-2 relative">
+                    <div class="relative">
+                        <img src="http://static.photos/agriculture/640x360/42" alt="Casa Alarcia - Agronegocios" class="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3]">
+                        <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-xl max-w-[220px]">
+                            <div class="text-3xl font-display font-bold text-brand-600">YPF</div>
+                            <div class="text-sm text-gray-600 font-medium">Combustible directo</div>
+                        </div>
+                        <div class="absolute -top-4 -right-4 bg-brand-500 rounded-2xl p-4 shadow-xl">
+                            <i data-lucide="sprout" class="w-8 h-8 text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== SERVICIOS DETALLE ===================== -->
+    <section class="py-20 lg:py-28 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="reveal inline-block bg-brand-100 text-brand-700 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">Servicios</span>
+                <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-brand-950 leading-tight mb-6">
+                    Todo lo que necesitás para tu <span class="text-brand-500">campaña</span>
+                </h2>
+                <p class="reveal reveal-delay-2 text-gray-600 text-lg">
+                    Brindamos un servicio integral que abarca desde el asesoramiento hasta la entrega en campo, pasando por la provisión de insumos y combustible.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Asesoramiento Técnico -->
+                <div class="service-detail-card reveal reveal-delay-1 bg-white rounded-2xl p-8 border border-gray-100 hover:border-brand-200 hover:shadow-xl">
+                    <div class="detail-icon w-14 h-14 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center mb-6">
+                        <i data-lucide="clipboard-check" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-brand-900 mb-3">Asesoramiento Técnico</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Nuestros ingenieros agrónomos lo acompañan en cada decisión de manejo, desde la planificación de la campaña hasta la cosecha.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Diagnóstico de suelos y lotes
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Planificación de rotaciones
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Recomendaciones de siembra
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Monitoreo de plagas y enfermedades
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Agroquímicos -->
+                <div class="service-detail-card reveal reveal-delay-2 bg-white rounded-2xl p-8 border border-gray-100 hover:border-brand-200 hover:shadow-xl">
+                    <div class="detail-icon w-14 h-14 rounded-xl bg-gold-50 text-gold-600 flex items-center justify-center mb-6">
+                        <i data-lucide="flask-conical" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-brand-900 mb-3">Agroquímicos</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Trabajamos con las marcas líderes del mercado para ofrecer herbicidas, insecticidas y fungicidas de la más alta calidad y eficacia.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Herbicidas de amplio espectro
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Insecticidas sistémicos y de contacto
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Fungicidas de última generación
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Adyuvantes y coadyuvantes
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Semillas -->
+                <div class="service-detail-card reveal reveal-delay-3 bg-white rounded-2xl p-8 border border-gray-100 hover:border-brand-200 hover:shadow-xl">
+                    <div class="detail-icon w-14 h-14 rounded-xl bg-earth-50 text-earth-600 flex items-center justify-center mb-6">
+                        <i data-lucide="seed" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-brand-900 mb-3">Semillas</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Variedades mejoradas adaptadas a las condiciones de la región, con el respaldo de los mejores bancos de germoplasma del país.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Trigo, cebada y avena
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Soja, maíz y girasol
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Forrajeras y pasturas
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Asesoramiento en elección varietal
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Fertilizantes -->
+                <div class="service-detail-card reveal reveal-delay-4 bg-white rounded-2xl p-8 border border-gray-100 hover:border-brand-200 hover:shadow-xl">
+                    <div class="detail-icon w-14 h-14 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-6">
+                        <i data-lucide="beaker" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-brand-900 mb-3">Fertilizantes</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Nutrición vegetal integral con productos sólidos y líquidos de máxima calidad, para maximizar el rendimiento de cada cultivo.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Urea, MAP y DAP
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Fertilizantes líquidos foliares
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Fórmulas a medida según análisis
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Plan de fertilización asistido
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Combustible YPF Directo -->
+                <div class="service-detail-card reveal reveal-delay-5 bg-gradient-to-br from-brand-700 to-brand-900 rounded-2xl p-8 border border-brand-600 hover:shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                    <div class="detail-icon w-14 h-14 rounded-xl bg-white/15 text-brand-200 flex items-center justify-center mb-6">
+                        <i data-lucide="fuel" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white mb-3">Combustible YPF Directo</h3>
+                    <p class="text-brand-200 text-sm leading-relaxed mb-4">Gas Oil grado 3 y NAFTA directamente del depósito YPF, sin intermediarios. El mejor precio y disponibilidad garantizada para la región.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-2 text-brand-200 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-300 shrink-0 mt-0.5"></i>
+                            Gas Oil Grado 3 directo
+                        </li>
+                        <li class="flex items-start gap-2 text-brand-200 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-300 shrink-0 mt-0.5"></i>
+                            Nafta súper y premium
+                        </li>
+                        <li class="flex items-start gap-2 text-brand-200 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-300 shrink-0 mt-0.5"></i>
+                            Entrega a domicilio en campo
+                        </li>
+                        <li class="flex items-start gap-2 text-brand-200 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-300 shrink-0 mt-0.5"></i>
+                            Facturación simplificada
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Logística y Entrega -->
+                <div class="service-detail-card reveal reveal-delay-6 bg-white rounded-2xl p-8 border border-gray-100 hover:border-brand-200 hover:shadow-xl">
+                    <div class="detail-icon w-14 h-14 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6">
+                        <i data-lucide="truck" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-brand-900 mb-3">Logística y Entrega</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Servicio de entrega directa en el campo o en su establecimiento, con una flota propia de vehículos equipados para cada tipo de producto.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Entrega de insumos en campo
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Distribución de combustible
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Transporte propio habilitado
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-600 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Despacho rápido y eficiente
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== BENEFICIOS ===================== -->
+    <section class="py-20 lg:py-28 bg-brand-900 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <img src="http://static.photos/agriculture/1200x630/55" alt="" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="reveal inline-block bg-brand-800 text-brand-300 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">¿Por qué elegirnos?</span>
+                <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white leading-tight mb-6">
+                    Ventajas de trabajar con <span class="text-brand-300">Casa Alarcia</span>
+                </h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="reveal text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-800 text-brand-300 flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="handshake" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-white font-bold mb-2">Trato directo</h4>
+                    <p class="text-brand-300 text-sm">Sin intermediarios. Usted habla directamente con el dueño del negocio.</p>
+                </div>
+                <div class="reveal reveal-delay-1 text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-800 text-brand-300 flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="map-pin" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-white font-bold mb-2">Conocimiento local</h4>
+                    <p class="text-brand-300 text-sm">Más de 100 años en la región nos permiten entender cada lote como nadie.</p>
+                </div>
+                <div class="reveal reveal-delay-2 text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-800 text-brand-300 flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="tag" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-white font-bold mb-2">Mejor precio</h4>
+                    <p class="text-brand-300 text-sm">YPF Directo garantiza el precio más competitivo del mercado regional.</p>
+                </div>
+                <div class="reveal reveal-delay-3 text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-800 text-brand-300 flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="clock" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-white font-bold mb-2">Disponibilidad</h4>
+                    <p class="text-brand-300 text-sm">Stock permanente y entrega ágil para que no pierda tiempo ni oportunidades.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== COBERTURA ===================== -->
+    <section class="py-20 lg:py-28 bg-white leaf-pattern relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="reveal inline-block bg-brand-50 text-brand-700 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">Zona de Cobertura</span>
+                    <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-brand-950 leading-tight mb-6">
+                        Atendemos toda la <span class="text-brand-500">región pampeana</span>
+                    </h2>
+                    <p class="reveal reveal-delay-2 text-gray-600 text-lg leading-relaxed mb-8">
+                        Desde nuestra sede en Macachín, cubrimos una amplia zona del centro y sur de La Pampa, llegando también al sudoeste de Buenos Aires. Nuestro equipo de asesores recorre permanentemente la zona, brindando atención personalizada en cada establecimiento.
+                    </p>
+
+                    <div class="reveal reveal-delay-3 grid grid-cols-2 gap-4 mb-8">
+                        <div class="bg-brand-50 rounded-xl p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i data-lucide="map-pin" class="w-4 h-4 text-brand-500"></i>
+                                <span class="font-semibold text-brand-900 text-sm">La Pampa</span>
+                            </div>
+                            <p class="text-gray-600 text-xs leading-relaxed">Macachín, General Acha, Santa Rosa, Toay, Anguil, Uriburu, Ataliva Roca</p>
+                        </div>
+                        <div class="bg-brand-50 rounded-xl p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i data-lucide="map-pin" class="w-4 h-4 text-brand-500"></i>
+                                <span class="font-semibold text-brand-900 text-sm">Buenos Aires</span>
+                            </div>
+                            <p class="text-gray-600 text-xs leading-relaxed">Coronel Pringles, Coronel Suárez, Pigüé, Tornquist, Saavedra, Puan</p>
+                        </div>
+                    </div>
+
+                    <div class="reveal reveal-delay-4 flex items-center gap-3 text-sm text-gray-600">
+                        <i data-lucide="phone" class="w-5 h-5 text-brand-500"></i>
+                        <span>Consulte por su zona: <a href="tel:02953452298" class="text-brand-600 font-semibold hover:text-brand-700 transition-colors">02953 452298</a></span>
+                    </div>
+                </div>
+
+                <div class="reveal reveal-delay-2 relative">
+                    <div class="relative">
+                        <img src="http://static.photos/nature/640x360/77" alt="Casa Alarcia - Zona de cobertura" class="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3]">
+                        <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-xl max-w-[220px]">
+                            <div class="text-3xl font-display font-bold text-brand-600">+100km</div>
+                            <div class="text-sm text-gray-600 font-medium">Radio de cobertura</div>
+                        </div>
+                        <div class="absolute -top-4 -left-4 bg-gold-500 rounded-2xl p-4 shadow-xl">
+                            <i data-lucide="map" class="w-8 h-8 text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CTA ===================== -->
+    <section class="py-20 lg:py-28 bg-brand-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="reveal inline-block bg-brand-100 text-brand-700 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">Comencemos a Trabajar</span>
+            <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-brand-950 leading-tight mb-6">
+                ¿Listo para la próxima <span class="text-brand-500">campaña</span>?
+            </h2>
+            <p class="reveal reveal-delay-2 text-gray-600 text-lg mb-10 max-w-2xl mx-auto">
+                No espere a último momento. Planifique su campaña con tiempo y asegure los insumos y combustible que necesita al mejor precio.
+            </p>
+            <div class="reveal reveal-delay-3 flex flex-wrap justify-center gap-4">
+                <a href="index.html#contacto" class="group bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-lg shadow-brand-500/30 hover:shadow-brand-600/40 flex items-center gap-2">
+                    Contactanos
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a href="tel:02953452298" class="bg-white border-2 border-brand-200 hover:border-brand-400 text-brand-700 px-8 py-4 rounded-xl font-semibold transition-all flex items-center gap-2">
+                    <i data-lucide="phone" class="w-4 h-4"></i>
+                    02953 452298
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="bg-brand-950 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 rounded-xl overflow-hidden shadow-lg">
+                            <img src="logo.png" alt="Casa Alarcia" class="w-full h-full object-contain">
+                        </div>
+                        <div>
+                            <span class="font-display font-bold text-2xl tracking-wide">Casa Alarcia</span>
+                            <span class="block text-[10px] uppercase tracking-[0.2em] text-brand-400 font-medium">Desde 1920</span>
+                        </div>
+                    </div>
+                    <p class="text-brand-300 leading-relaxed max-w-md mb-6">
+                        Una empresa familiar con más de 100 años de trayectoria en Macachín, La Pampa, ofreciendo soluciones integrales para el campo y la región.
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <a href="mailto:info@casaalarcia.com" class="w-10 h-10 rounded-lg bg-brand-900 hover:bg-brand-800 text-brand-400 hover:text-brand-200 flex items-center justify-center transition-colors">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </a>
+                        <a href="tel:02953452298" class="w-10 h-10 rounded-lg bg-brand-900 hover:bg-brand-800 text-brand-400 hover:text-brand-200 flex items-center justify-center transition-colors">
+                            <i data-lucide="phone" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://casaalarcia.clientes.physis.com.ar/phy2web/auth/usuario" target="_blank" class="w-10 h-10 rounded-lg bg-brand-900 hover:bg-brand-800 text-brand-400 hover:text-brand-200 flex items-center justify-center transition-colors">
+                            <i data-lucide="lock" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-brand-300 mb-6">Servicios</h4>
+                    <ul class="space-y-3">
+                        <li><a href="Agronegocios.html" class="text-brand-400 hover:text-brand-200 transition-colors text-sm">Agronegocios</a></li>
+                        <li><a href="http://www.casaalarcia.com/Rumax/index.html" class="text-brand-400 hover:text-brand-200 transition-colors text-sm">Balanceados Rumax</a></li>
+                        <li><a href="http://www.casaalarcia.com/Acopio/index.html" class="text-brand-400 hover:text-brand-200 transition-colors text-sm">Acopio</a></li>
+                        <li><a href="YPF.html" class="text-brand-400 hover:text-brand-200 transition-colors text-sm">YPF Combustibles</a></li>
+                        <li><a href="http://www.casaalarcia.com/Molino/index.html" class="text-brand-400 hover:text-brand-200 transition-colors text-sm">Molino</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-brand-300 mb-6">Contacto</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2 text-brand-400 text-sm">
+                            <i data-lucide="clock" class="w-4 h-4 text-brand-500 shrink-0"></i>
+                            Lun-Vie 8-17hs / Sáb 8-12hs
+                        </li>
+                        <li class="flex items-center gap-2 text-brand-400 text-sm">
+                            <i data-lucide="phone" class="w-4 h-4 text-brand-500 shrink-0"></i>
+                            02953 452298
+                        </li>
+                        <li class="flex items-center gap-2 text-brand-400 text-sm">
+                            <i data-lucide="mail" class="w-4 h-4 text-brand-500 shrink-0"></i>
+                            info@casaalarcia.com
+                        </li>
+                        <li class="flex items-start gap-2 text-brand-400 text-sm">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Ruta 1 y 18, L6307 Macachín, La Pampa
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-brand-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-brand-500 text-sm">&copy; 2024 Casa Alarcia. Todos los derechos reservados.</p>
+                <a href="https://casaalarcia.clientes.physis.com.ar/phy2web/auth/usuario" target="_blank" class="text-brand-400 hover:text-brand-200 text-sm font-medium transition-colors flex items-center gap-1">
+                    <i data-lucide="log-in" class="w-4 h-4"></i>
+                    Acceso Clientes
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button id="backToTop" class="fixed bottom-6 left-6 w-12 h-12 bg-brand-500 hover:bg-brand-600 text-white rounded-xl shadow-lg shadow-brand-500/30 flex items-center justify-center transition-all opacity-0 translate-y-4 z-40">
+        <i data-lucide="chevron-up" class="w-5 h-5"></i>
+    </button>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Scroll reveal animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { rootMargin: '0px 0px -80px 0px', threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            if (currentScroll > 80) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+
+            const btn = document.getElementById('backToTop');
+            if (currentScroll > 600) {
+                btn.style.opacity = '1';
+                btn.style.transform = 'translateY(0)';
+            } else {
+                btn.style.opacity = '0';
+                btn.style.transform = 'translateY(16px)';
+            }
+        });
+
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Mobile menu
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('open');
+            mobileOverlay.classList.remove('hidden');
+            setTimeout(() => mobileOverlay.style.opacity = '1', 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            mobileOverlay.style.opacity = '0';
+            setTimeout(() => {
+                mobileOverlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        document.getElementById('mobileMenuBtn').addEventListener('click', openMobileMenu);
+        document.getElementById('mobileMenuClose').addEventListener('click', closeMobileMenu);
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+
+        setTimeout(() => lucide.createIcons(), 100);
+    </script>
+</body>
+</html>

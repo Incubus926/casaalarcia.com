@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YPF Combustibles - Casa Alarcia | Distribuidor oficial YPF en Macachín</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ed',
+                            100: '#d9ebd2',
+                            200: '#b5d7a8',
+                            300: '#8bbc76',
+                            400: '#6ba34e',
+                            500: '#4f8a33',
+                            600: '#3d6e27',
+                            700: '#325822',
+                            800: '#2a471f',
+                            900: '#1e3518',
+                            950: '#111f0e',
+                        },
+                        gold: {
+                            50: '#fefbf3',
+                            100: '#fdf2d1',
+                            200: '#fbe39e',
+                            300: '#f8d06a',
+                            400: '#f5b83c',
+                            500: '#e5a322',
+                            600: '#c07c14',
+                            700: '#9a5a12',
+                            800: '#7d4716',
+                            900: '#683b17',
+                        },
+                        earth: {
+                            50: '#faf6f1',
+                            100: '#f0e6d5',
+                            200: '#e2cca8',
+                            300: '#d2ad76',
+                            400: '#c49553',
+                            500: '#b17f3e',
+                            600: '#966633',
+                            700: '#7a502c',
+                            800: '#654228',
+                            900: '#543725',
+                        },
+                        ypf: {
+                            50: '#fff8e1',
+                            100: '#ffecb3',
+                            200: '#ffe082',
+                            300: '#ffd54f',
+                            400: '#ffca28',
+                            500: '#ffc107',
+                            600: '#ffb300',
+                            700: '#ffa000',
+                            800: '#ff8f00',
+                            900: '#ff6f00',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Playfair Display', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        .hero-ypf {
+            background: 
+                linear-gradient(135deg, rgba(17, 31, 14, 0.92) 0%, rgba(42, 71, 31, 0.8) 40%, rgba(79, 138, 51, 0.6) 100%),
+                url('http://static.photos/industry/1200x630/15');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .grain-overlay::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+        .reveal-delay-6 { transition-delay: 0.6s; }
+        .reveal-delay-7 { transition-delay: 0.7s; }
+        .reveal-delay-8 { transition-delay: 0.8s; }
+
+        .nav-scrolled {
+            background: rgba(255, 255, 255, 0.97) !important;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+        }
+        .nav-scrolled .nav-link { color: #2a471f !important; }
+        .nav-scrolled .nav-link:hover { color: #4f8a33 !important; }
+        .nav-scrolled .nav-cta { 
+            background: #4f8a33 !important; 
+            color: white !important;
+        }
+        .nav-scrolled .logo-text { color: #2a471f !important; }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .leaf-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234f8a33' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+        }
+        .service-card:hover .card-icon {
+            background: #4f8a33;
+            color: white;
+            box-shadow: 0 8px 30px rgba(79, 138, 51, 0.4);
+        }
+        .card-icon {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.5); }
+        }
+        .pulse-dot {
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        .float-animation-delayed {
+            animation: float 8s ease-in-out 2s infinite;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f0f7ed; }
+        ::-webkit-scrollbar-thumb { background: #8bbc76; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4f8a33; }
+
+        .form-input:focus {
+            border-color: #4f8a33;
+            box-shadow: 0 0 0 3px rgba(79, 138, 51, 0.15);
+        }
+
+        .toast {
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .fuel-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fuel-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+        }
+
+        .ypf-badge {
+            background: linear-gradient(135deg, #0079C1, #005EA6);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- ===================== NAVIGATION ===================== -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-lg overflow-hidden shadow-lg shadow-brand-500/30 group-hover:shadow-brand-500/50 transition-shadow">
+                        <img src="logo.png" alt="Casa Alarcia" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <span class="logo-text text-white font-display font-bold text-xl tracking-wide transition-colors">Casa Alarcia</span>
+                        <span class="block text-[10px] uppercase tracking-[0.2em] text-brand-200 font-medium">Desde 1920</span>
+                    </div>
+                </a>
+                <div class="hidden lg:flex items-center gap-1">
+                    <a href="index.html#inicio" class="nav-link text-white/80 hover:text-white px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-white/10">Inicio</a>
+                    <a href="index.html#trayectoria" class="nav-link text-white/80 hover:text-white px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-white/10">Trayectoria</a>
+                    <a href="Agronegocios.html" class="nav-link text-white/80 hover:text-white px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-white/10">Agronegocios</a>
+                    <a href="YPF.html" class="nav-link text-white/80 hover:text-white px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-white/10 bg-white/10">YPF</a>
+                    <a href="index.html#servicios" class="nav-link text-white/80 hover:text-white px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-white/10">Servicios</a>
+                    <a href="index.html#contacto" class="nav-link text-white/80 hover:text-white px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-white/10">Contacto</a>
+                    <a href="https://casaalarcia.clientes.physis.com.ar/phy2web/auth/usuario" target="_blank" 
+                       class="nav-cta ml-3 bg-white/15 backdrop-blur-sm border border-white/25 text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/25 transition-all flex items-center gap-2">
+                        <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                        Acceso Clientes
+                    </a>
+                </div>
+                <button id="mobileMenuBtn" class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-80 max-w-full bg-brand-950 z-[60] shadow-2xl">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-10">
+                <span class="text-white font-display font-bold text-xl">Menú</span>
+                <button id="mobileMenuClose" class="text-white/70 hover:text-white p-2 rounded-lg hover:bg-white/10 transition-colors">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="space-y-1">
+                <a href="index.html#inicio" class="mobile-link block text-white/80 hover:text-white hover:bg-white/10 px-4 py-3 rounded-lg text-lg font-medium transition-colors">Inicio</a>
+                <a href="index.html#trayectoria" class="mobile-link block text-white/80 hover:text-white hover:bg-white/10 px-4 py-3 rounded-lg text-lg font-medium transition-colors">Trayectoria</a>
+                <a href="Agronegocios.html" class="mobile-link block text-white/80 hover:text-white hover:bg-white/10 px-4 py-3 rounded-lg text-lg font-medium transition-colors">Agronegocios</a>
+                <a href="YPF.html" class="mobile-link block text-brand-200 hover:text-white hover:bg-white/10 px-4 py-3 rounded-lg text-lg font-medium transition-colors">YPF</a>
+                <a href="index.html#servicios" class="mobile-link block text-white/80 hover:text-white hover:bg-white/10 px-4 py-3 rounded-lg text-lg font-medium transition-colors">Servicios</a>
+                <a href="index.html#contacto" class="mobile-link block text-white/80 hover:text-white hover:bg-white/10 px-4 py-3 rounded-lg text-lg font-medium transition-colors">Contacto</a>
+            </div>
+            <div class="mt-8 pt-8 border-t border-white/10">
+                <a href="https://casaalarcia.clientes.physis.com.ar/phy2web/auth/usuario" target="_blank" 
+                   class="flex items-center gap-2 bg-brand-500 text-white px-5 py-3 rounded-lg font-semibold hover:bg-brand-600 transition-colors">
+                    <i data-lucide="lock" class="w-4 h-4"></i>
+                    Acceso Clientes
+                </a>
+            </div>
+            <div class="mt-8 pt-8 border-t border-white/10 space-y-3 text-white/50 text-sm">
+                <p>Tel: 02953 452298</p>
+                <p>info@casaalarcia.com</p>
+            </div>
+        </div>
+    </div>
+    <div id="mobileOverlay" class="fixed inset-0 bg-black/50 z-[55] hidden opacity-0 transition-opacity duration-300"></div>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero-ypf grain-overlay relative min-h-[70vh] flex items-center">
+        <div class="absolute top-20 right-10 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl float-animation"></div>
+        <div class="absolute bottom-32 left-10 w-48 h-48 bg-ypf-400/10 rounded-full blur-3xl float-animation-delayed"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 relative z-10">
+            <div class="max-w-3xl">
+                <div class="reveal inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8">
+                    <span class="w-2 h-2 bg-ypf-400 rounded-full pulse-dot"></span>
+                    <span class="text-brand-100 text-sm font-medium">Distribuidor oficial YPF</span>
+                </div>
+
+                <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-white leading-[1.1] mb-6">
+                    Combustibles <span class="text-ypf-400">YPF</span> directo del depósito
+                </h1>
+
+                <p class="reveal reveal-delay-2 text-lg sm:text-xl text-white/70 max-w-2xl leading-relaxed mb-10">
+                    Gas Oil grado 3, Nafta súper y premium directamente del depósito YPF. Sin intermediarios, el mejor precio y disponibilidad garantizada para la región.
+                </p>
+
+                <div class="reveal reveal-delay-3 flex flex-wrap gap-6 text-white/80">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center">
+                            <i data-lucide="fuel" class="w-6 h-6 text-ypf-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-display font-bold text-white">Gas Oil</div>
+                            <div class="text-xs text-brand-200">Grado 3 directo</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center">
+                            <i data-lucide="droplets" class="w-6 h-6 text-ypf-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-display font-bold text-white">Nafta</div>
+                            <div class="text-xs text-brand-200">Súper y Premium</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center">
+                            <i data-lucide="truck" class="w-6 h-6 text-ypf-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-display font-bold text-white">Entrega</div>
+                            <div class="text-xs text-brand-200">A domicilio en campo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40">
+            <span class="text-xs uppercase tracking-widest">Descubrí nuestros productos</span>
+            <div class="w-px h-8 bg-gradient-to-b from-white/40 to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- ===================== INTRO ===================== -->
+    <section class="py-20 lg:py-28 bg-white leaf-pattern relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="reveal inline-block bg-brand-50 text-brand-700 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">YPF Directo</span>
+                    <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-brand-950 leading-tight mb-6">
+                        Combustible directo del <span class="text-brand-500">depósito YPF</span>
+                    </h2>
+                    <p class="reveal reveal-delay-2 text-gray-600 text-lg leading-relaxed mb-6">
+                        Como distribuidores oficiales de YPF, en Casa Alarcia brindamos combustible directamente del depósito, eliminando intermediarios y garantizando el mejor precio del mercado regional.
+                    </p>
+                    <p class="reveal reveal-delay-3 text-gray-600 text-lg leading-relaxed mb-6">
+                        Contamos con una boca de expendio propia ubicada en Ruta 1 y 18, Macachín, con atención personalizada y horarios extensos para que usted nunca se quede sin combustible.
+                    </p>
+                    <p class="reveal reveal-delay-4 text-gray-600 text-lg leading-relaxed mb-8">
+                        Además, ofrecemos servicio de entrega a domicilio para el productor agropecuario, llevando el combustible directamente al campo con nuestra flota de transporte habilitada.
+                    </p>
+                    <div class="reveal reveal-delay-5 flex flex-wrap gap-4">
+                        <a href="#pedido" class="group bg-brand-500 hover:bg-brand-600 text-white px-6 py-3 rounded-xl font-semibold transition-all shadow-lg shadow-brand-500/30 hover:shadow-brand-600/40 flex items-center gap-2">
+                            Hacer un pedido
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="tel:02953452298" class="bg-white border-2 border-brand-200 hover:border-brand-400 text-brand-700 px-6 py-3 rounded-xl font-semibold transition-all flex items-center gap-2">
+                            <i data-lucide="phone" class="w-4 h-4"></i>
+                            02953 452298
+                        </a>
+                    </div>
+                </div>
+                <div class="reveal reveal-delay-2 relative">
+                    <div class="relative">
+                        <img src="http://static.photos/industry/640x360/22" alt="Casa Alarcia - YPF Combustibles" class="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3]">
+                        <div class="absolute -bottom-6 -left-6 ypf-badge rounded-2xl p-6 shadow-xl max-w-[200px]">
+                            <div class="text-3xl font-display font-bold text-white">YPF</div>
+                            <div class="text-sm text-blue-100 font-medium">Distribuidor oficial</div>
+                        </div>
+                        <div class="absolute -top-4 -right-4 bg-brand-500 rounded-2xl p-4 shadow-xl">
+                            <i data-lucide="fuel" class="w-8 h-8 text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== PRODUCTOS ===================== -->
+    <section class="py-20 lg:py-28 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="reveal inline-block bg-brand-100 text-brand-700 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">Nuestros Productos</span>
+                <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-brand-950 leading-tight mb-6">
+                    Línea completa de <span class="text-brand-500">combustibles</span>
+                </h2>
+                <p class="reveal reveal-delay-2 text-gray-600 text-lg">
+                    Ofrecemos la gama completa de combustibles YPF para satisfacer las necesidades del productor agropecuario y la comunidad.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gas Oil Grado 3 -->
+                <div class="fuel-card reveal reveal-delay-1 bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-brand-200">
+                    <div class="h-3 bg-gradient-to-r from-blue-600 to-blue-500"></div>
+                    <div class="p-8">
+                        <div class="w-14 h-14 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6">
+                            <i data-lucide="fuel" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-brand-900 mb-3">Gas Oil Grado 3</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">El combustible esencial para la actividad agropecuaria. Gas Oil YPF de máxima calidad, directo del depósito con garantía de origen.</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start gap-2 text-gray-600 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                                Combustible de primer uso
+                            </li>
+                            <li class="flex items-start gap-2 text-gray-600 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                                Calidad YPF garantizada
+                            </li>
+                            <li class="flex items-start gap-2 text-gray-600 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                                Ideal para tractores y maquinaria
+                            </li>
+                            <li class="flex items-start gap-2 text-gray-600 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                                Entrega a domicilio disponible
+                            </li>
+                        </ul>
+                        <a href="#pedido" class="text-brand-600 text-sm font-semibold flex items-center gap-1 hover:text-brand-700 transition-colors">
+                            Solicitar presupuesto <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Nafta Súper -->
+                <div class="fuel-card reveal reveal-delay-2 bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-brand-200">
+                    <div class="h-3 bg-gradient-to-r from-green-600 to-green-500"></div>
+                    <div class="p-8">
+                        <div class="w-14 h-14 rounded-xl bg-green-50 text-green-600 flex items-center justify-center mb-6">
+                            <i data-lucide="droplets" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-brand-900 mb-3">Nafta Súper</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">Nafta YPF Súper para vehículos y utilitarios. Rendimiento óptimo y la calidad que solo YPF puede garantizar.</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start gap-2 text-gray-600 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                                Nafta de calidad YPF
+                            </li>
+                            <li class="flex items-start gap-2 text-gray-600 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                                Rendimiento superior
+                            </li>
+                            <li class="flex items-start gap-2 text-gray-600 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                                Para uso en vehículos y utilitarios
+                            </li>
+                            <li class="flex items-start gap-2 text-gray-600 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                                Despacho rápido y eficiente
+                            </li>
+                        </ul>
+                        <a href="#pedido" class="text-brand-600 text-sm font-semibold flex items-center gap-1 hover:text-brand-700 transition-colors">
+                            Solicitar presupuesto <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Nafta Premium -->
+                <div class="fuel-card reveal reveal-delay-3 bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-brand-200">
+                    <div class="h-3 bg-gradient-to-r from-ypf-700 to-ypf-500"></div>
+                    <div class="p-8">
+                        <div class="w-14 h-14 rounded-xl bg-ypf-50 text-ypf-700 flex items-center justify-center mb-6">
+                            <i data-lucide="star" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-brand-900 mb-3">Nafta Premium</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">Nafta YPF Premium de mayor octanaje, para motores de alta compresión y vehículos que requieren rendimiento máximo.</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start gap-2 text-gray-600 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                                Mayor poder calorífico
+                            </li>
+                            <li class="flex items-start gap-2 text-gray-600 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                                Protección del motor
+                            </li>
+                            <li class="flex items-start gap-2 text-gray-600 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                                Mejor rendimiento por litro
+                            </li>
+                            <li class="flex items-start gap-2 text-gray-600 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                                Ideal para vehículos modernos
+                            </li>
+                        </ul>
+                        <a href="#pedido" class="text-brand-600 text-sm font-semibold flex items-center gap-1 hover:text-brand-700 transition-colors">
+                            Solicitar presupuesto <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== SERVICIOS ===================== -->
+    <section class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="reveal inline-block bg-brand-50 text-brand-700 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">Nuestros Servicios</span>
+                <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-brand-950 leading-tight mb-6">
+                    Atención personalizada <span class="text-brand-500">en todo momento</span>
+                </h2>
+                <p class="reveal reveal-delay-2 text-gray-600 text-lg">
+                    Más que un expendio de combustible, ofrecemos un servicio completo para que usted se concentre en lo que realmente importa.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="service-card reveal reveal-delay-1 bg-brand-50 rounded-2xl p-8 border border-brand-100 text-center">
+                    <div class="card-icon w-16 h-16 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center mx-auto mb-5">
+                        <i data-lucide="store" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-brand-900 mb-2">Boca de expendio</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Atención personalizada en nuestra estación ubicada en Ruta 1 y 18, Macachín.</p>
+                </div>
+
+                <div class="service-card reveal reveal-delay-2 bg-brand-50 rounded-2xl p-8 border border-brand-100 text-center">
+                    <div class="card-icon w-16 h-16 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center mx-auto mb-5">
+                        <i data-lucide="truck" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-brand-900 mb-2">Entrega a domicilio</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Servicio de distribución directa en campo con transporte propio y habilitado.</p>
+                </div>
+
+                <div class="service-card reveal reveal-delay-3 bg-brand-50 rounded-2xl p-8 border border-brand-100 text-center">
+                    <div class="card-icon w-16 h-16 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center mx-auto mb-5">
+                        <i data-lucide="receipt" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-brand-900 mb-2">Facturación simplificada</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Facturación ágil y transparente, adaptada a las necesidades del productor.</p>
+                </div>
+
+                <div class="service-card reveal reveal-delay-4 bg-brand-50 rounded-2xl p-8 border border-brand-100 text-center">
+                    <div class="card-icon w-16 h-16 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center mx-auto mb-5">
+                        <i data-lucide="clock" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-brand-900 mb-2">Horarios extensos</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Lunes a Viernes de 8 a 17 hs. Sábados de 8 a 12 hs. Siempre disponibles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== VENTAJAS ===================== -->
+    <section class="py-20 lg:py-28 bg-brand-900 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <img src="http://static.photos/industry/1200x630/8" alt="" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="reveal inline-block bg-brand-800 text-brand-300 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">¿Por qué elegirnos?</span>
+                <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white leading-tight mb-6">
+                    Ventajas del combustible <span class="text-ypf-400">YPF Directo</span>
+                </h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="reveal text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-800 text-ypf-400 flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="tag" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-white font-bold mb-2">Mejor precio</h4>
+                    <p class="text-brand-300 text-sm">Directo del depósito, sin intermediarios. El precio más competitivo de la zona.</p>
+                </div>
+                <div class="reveal reveal-delay-1 text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-800 text-ypf-400 flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="shield-check" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-white font-bold mb-2">Calidad garantizada</h4>
+                    <p class="text-brand-300 text-sm">Combustible YPF de primer uso, con la garantía de origen que usted necesita.</p>
+                </div>
+                <div class="reveal reveal-delay-2 text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-800 text-ypf-400 flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="package-check" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-white font-bold mb-2">Disponibilidad</h4>
+                    <p class="text-brand-300 text-sm">Stock permanente para que no se quede sin combustible en momentos críticos.</p>
+                </div>
+                <div class="reveal reveal-delay-3 text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-800 text-ypf-400 flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="handshake" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-white font-bold mb-2">Trato directo</h4>
+                    <p class="text-brand-300 text-sm">Atención personalizada y relación de confianza con cada cliente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FORMULARIO PEDIDO ===================== -->
+    <section id="pedido" class="py-20 lg:py-28 bg-white leaf-pattern relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-start">
+                <div>
+                    <span class="reveal inline-block bg-brand-50 text-brand-700 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">Solicitar Combustible</span>
+                    <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-brand-950 leading-tight mb-6">
+                        Hacé tu <span class="text-brand-500">pedido</span> ahora
+                    </h2>
+                    <p class="reveal reveal-delay-2 text-gray-600 text-lg leading-relaxed mb-8">
+                        Complete el formulario y nos comunicaremos con usted a la brevedad para confirmar su pedido. También puede llamarnos directamente.
+                    </p>
+
+                    <div class="reveal reveal-delay-3 space-y-6">
+                        <div class="bg-brand-50 rounded-2xl p-6 border border-brand-100">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center shrink-0">
+                                    <i data-lucide="phone" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-brand-900">Teléfono directo</h4>
+                                    <a href="tel:02953452298" class="text-brand-600 text-lg font-semibold hover:text-brand-700 transition-colors">02953 452298</a>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 text-sm">Lun a Vie 8:00-17:00 hs | Sáb 8:00-12:00 hs</p>
+                        </div>
+
+                        <div class="bg-brand-50 rounded-2xl p-6 border border-brand-100">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center shrink-0">
+                                    <i data-lucide="mail" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-brand-900">Email</h4>
+                                    <a href="mailto:info@casaalarcia.com" class="text-brand-600 hover:text-brand-700 transition-colors">info@casaalarcia.com</a>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 text-sm">Respuesta en menos de 24 hs hábiles</p>
+                        </div>
+
+                        <div class="bg-brand-50 rounded-2xl p-6 border border-brand-100">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center shrink-0">
+                                    <i data-lucide="map-pin" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-brand-900">Ubicación</h4>
+                                    <p class="text-gray-600 text-sm">Ruta 1 y 18, L6307 Macachín, La Pampa</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-ypf-50 rounded-2xl p-6 border border-ypf-200">
+                            <div class="flex items-center gap-4 mb-2">
+                                <div class="w-12 h-12 rounded-xl ypf-badge text-white flex items-center justify-center shrink-0">
+                                    <i data-lucide="file-text" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-brand-900">Formularios YPF</h4>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4 ml-16">Descargá los formularios necesarios para operar con nosotros:</p>
+                            <div class="ml-16 flex flex-wrap gap-3">
+                                <a href="https://www.casaalarcia.com/YPF/formularios/solicitud_servicio.pdf" target="_blank" class="inline-flex items-center gap-2 bg-white border border-ypf-300 text-brand-800 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-ypf-50 transition-colors">
+                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                    Solicitud de servicio
+                                </a>
+                                <a href="https://www.casaalarcia.com/YPF/formularios/constancia_cuit.pdf" target="_blank" class="inline-flex items-center gap-2 bg-white border border-ypf-300 text-brand-800 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-ypf-50 transition-colors">
+                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                    Constancia de CUIT
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="reveal reveal-delay-2">
+                    <div class="bg-white rounded-2xl p-8 lg:p-10 shadow-xl border border-gray-100">
+                        <h3 class="font-display font-bold text-xl text-brand-900 mb-2">Formulario de pedido</h3>
+                        <p class="text-gray-500 text-sm mb-8">Complete sus datos y nos comunicaremos a la brevedad.</p>
+                        <form id="ypfForm" class="space-y-5">
+                            <div class="grid sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Nombre y Apellido *</label>
+                                    <input type="text" required class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none transition-all text-sm" placeholder="Su nombre completo">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Teléfono *</label>
+                                    <input type="tel" required class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none transition-all text-sm" placeholder="02953 452298">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                                <input type="email" class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none transition-all text-sm" placeholder="correo@ejemplo.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Razón Social / Establecimiento</label>
+                                <input type="text" class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none transition-all text-sm" placeholder="Nombre del establecimiento">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Tipo de combustible *</label>
+                                <select required class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none transition-all text-sm bg-white">
+                                    <option value="">Seleccione un producto</option>
+                                    <option>Gas Oil Grado 3</option>
+                                    <option>Nafta Súper</option>
+                                    <option>Nafta Premium</option>
+                                </select>
+                            </div>
+                            <div class="grid sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Cantidad estimada</label>
+                                    <input type="text" class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none transition-all text-sm" placeholder="Ej: 500 litros">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Modalidad *</label>
+                                    <select required class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none transition-all text-sm bg-white">
+                                        <option value="">Seleccione</option>
+                                        <option>Retiro en boca de expendio</option>
+                                        <option>Entrega a domicilio</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Dirección de entrega (si corresponde)</label>
+                                <input type="text" class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none transition-all text-sm" placeholder="Dirección o ubicación del campo">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Observaciones</label>
+                                <textarea rows="3" class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none transition-all text-sm resize-none" placeholder="Comentarios adicionales..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-semibold py-4 rounded-xl transition-all shadow-lg shadow-brand-500/25 hover:shadow-brand-600/30 flex items-center justify-center gap-2">
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                                Enviar Pedido
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CTA ===================== -->
+    <section class="py-20 lg:py-28 bg-brand-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="reveal inline-block bg-brand-100 text-brand-700 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">No se quede sin combustible</span>
+            <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-brand-950 leading-tight mb-6">
+                Asegurá tu <span class="text-brand-500">provisión</span> para la campaña
+            </h2>
+            <p class="reveal reveal-delay-2 text-gray-600 text-lg mb-10 max-w-2xl mx-auto">
+                Planifique su consumo de combustible con anticipación y garantice disponibilidad y precio durante toda la campaña.
+            </p>
+            <div class="reveal reveal-delay-3 flex flex-wrap justify-center gap-4">
+                <a href="#pedido" class="group bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-lg shadow-brand-500/30 hover:shadow-brand-600/40 flex items-center gap-2">
+                    Hacer un pedido
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a href="tel:02953452298" class="bg-white border-2 border-brand-200 hover:border-brand-400 text-brand-700 px-8 py-4 rounded-xl font-semibold transition-all flex items-center gap-2">
+                    <i data-lucide="phone" class="w-4 h-4"></i>
+                    02953 452298
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="bg-brand-950 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 rounded-xl overflow-hidden shadow-lg">
+                            <img src="logo.png" alt="Casa Alarcia" class="w-full h-full object-contain">
+                        </div>
+                        <div>
+                            <span class="font-display font-bold text-2xl tracking-wide">Casa Alarcia</span>
+                            <span class="block text-[10px] uppercase tracking-[0.2em] text-brand-400 font-medium">Desde 1920</span>
+                        </div>
+                    </div>
+                    <p class="text-brand-300 leading-relaxed max-w-md mb-6">
+                        Una empresa familiar con más de 100 años de trayectoria en Macachín, La Pampa, ofreciendo soluciones integrales para el campo y la región.
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <a href="mailto:info@casaalarcia.com" class="w-10 h-10 rounded-lg bg-brand-900 hover:bg-brand-800 text-brand-400 hover:text-brand-200 flex items-center justify-center transition-colors">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </a>
+                        <a href="tel:02953452298" class="w-10 h-10 rounded-lg bg-brand-900 hover:bg-brand-800 text-brand-400 hover:text-brand-200 flex items-center justify-center transition-colors">
+                            <i data-lucide="phone" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://casaalarcia.clientes.physis.com.ar/phy2web/auth/usuario" target="_blank" class="w-10 h-10 rounded-lg bg-brand-900 hover:bg-brand-800 text-brand-400 hover:text-brand-200 flex items-center justify-center transition-colors">
+                            <i data-lucide="lock" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-brand-300 mb-6">Servicios</h4>
+                    <ul class="space-y-3">
+                        <li><a href="Agronegocios.html" class="text-brand-400 hover:text-brand-200 transition-colors text-sm">Agronegocios</a></li>
+                        <li><a href="http://www.casaalarcia.com/Rumax/index.html" class="text-brand-400 hover:text-brand-200 transition-colors text-sm">Balanceados Rumax</a></li>
+                        <li><a href="http://www.casaalarcia.com/Acopio/index.html" class="text-brand-400 hover:text-brand-200 transition-colors text-sm">Acopio</a></li>
+                        <li><a href="YPF.html" class="text-brand-400 hover:text-brand-200 transition-colors text-sm font-semibold">YPF Combustibles</a></li>
+                        <li><a href="http://www.casaalarcia.com/Molino/index.html" class="text-brand-400 hover:text-brand-200 transition-colors text-sm">Molino</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-brand-300 mb-6">Contacto</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2 text-brand-400 text-sm">
+                            <i data-lucide="clock" class="w-4 h-4 text-brand-500 shrink-0"></i>
+                            Lun-Vie 8-17hs / Sáb 8-12hs
+                        </li>
+                        <li class="flex items-center gap-2 text-brand-400 text-sm">
+                            <i data-lucide="phone" class="w-4 h-4 text-brand-500 shrink-0"></i>
+                            02953 452298
+                        </li>
+                        <li class="flex items-center gap-2 text-brand-400 text-sm">
+                            <i data-lucide="mail" class="w-4 h-4 text-brand-500 shrink-0"></i>
+                            info@casaalarcia.com
+                        </li>
+                        <li class="flex items-start gap-2 text-brand-400 text-sm">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                            Ruta 1 y 18, L6307 Macachín, La Pampa
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-brand-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-brand-500 text-sm">&copy; 2024 Casa Alarcia. Todos los derechos reservados.</p>
+                <a href="https://casaalarcia.clientes.physis.com.ar/phy2web/auth/usuario" target="_blank" class="text-brand-400 hover:text-brand-200 text-sm font-medium transition-colors flex items-center gap-1">
+                    <i data-lucide="log-in" class="w-4 h-4"></i>
+                    Acceso Clientes
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button id="backToTop" class="fixed bottom-6 left-6 w-12 h-12 bg-brand-500 hover:bg-brand-600 text-white rounded-xl shadow-lg shadow-brand-500/30 flex items-center justify-center transition-all opacity-0 translate-y-4 z-40">
+        <i data-lucide="chevron-up" class="w-5 h-5"></i>
+    </button>
+
+    <!-- Toast -->
+    <div id="toast" class="toast fixed bottom-6 right-6 bg-brand-600 text-white px-6 py-4 rounded-xl shadow-2xl z-[70] flex items-center gap-3">
+        <i data-lucide="check-circle" class="w-5 h-5"></i>
+        <span id="toastMsg">Pedido enviado con éxito</span>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Scroll reveal animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { rootMargin: '0px 0px -80px 0px', threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            if (currentScroll > 80) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+
+            const btn = document.getElementById('backToTop');
+            if (currentScroll > 600) {
+                btn.style.opacity = '1';
+                btn.style.transform = 'translateY(0)';
+            } else {
+                btn.style.opacity = '0';
+                btn.style.transform = 'translateY(16px)';
+            }
+        });
+
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Mobile menu
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('open');
+            mobileOverlay.classList.remove('hidden');
+            setTimeout(() => mobileOverlay.style.opacity = '1', 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            mobileOverlay.style.opacity = '0';
+            setTimeout(() => {
+                mobileOverlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        document.getElementById('mobileMenuBtn').addEventListener('click', openMobileMenu);
+        document.getElementById('mobileMenuClose').addEventListener('click', closeMobileMenu);
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('ypfForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = '¡Pedido enviado con éxito! Nos comunicaremos a la brevedad para confirmar.';
+            toast.classList.add('show');
+
+            this.reset();
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        });
+
+        setTimeout(() => lucide.createIcons(), 100);
+    </script>
+</body>
+</html>

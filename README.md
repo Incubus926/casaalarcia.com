@@ -1,1 +1,13 @@
-# casaalarcia.com
+---
+title: DeepSite Project
+colorFrom: pink
+colorTo: yellow
+sdk: static
+emoji: 🎨
+tags:
+  - deepsite-v4
+---
+
+# DeepSite Project
+
+This project has been created with [DeepSite](https://deepsite.hf.co) AI Vibe Coding.
